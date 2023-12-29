@@ -21,7 +21,7 @@ const LocationSpeedTracker = () => {
 
         // Show a map centered at Latitude / Longitude.
 
-        setSpeed(speed * 3.6)
+        setSpeed(speed)
         setLocation({ latitude, longitude })
 
     }
@@ -44,6 +44,9 @@ const LocationSpeedTracker = () => {
                 </div>
             )}
             {speed !== null && <p>Speed: {speed} m/s</p>}
+
+            {speed !== null && <p>Speed: {speed * 3.6} km/hr</p>}
+
         </div>
     );
 };
