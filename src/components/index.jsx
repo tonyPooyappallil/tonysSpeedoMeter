@@ -43,9 +43,10 @@ const LocationSpeedTracker = () => {
                     <p>Longitude: {location.longitude}</p>
                 </div>
             )}
-            {speed !== null && <p>Speed: {speed} m/s</p>}
+            <h1>   {speed !== null && <p>Speed: {speed} m/s</p>} </h1>
 
-            {speed !== null && <p>Speed: {speed * 3.6} km/hr</p>}
+            <h1> {speed !== null && <p>Speed: {speed * 3.6} km/hr</p>}</h1>
+
 
         </div>
     );
