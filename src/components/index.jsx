@@ -9,7 +9,7 @@ const LocationSpeedTracker = () => {
 
     var options = {
         enableHighAccuracy: true,
-        timeout: 5000,
+        timeout: 500,
         maximumAge: 0
     }
 
