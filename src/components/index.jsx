@@ -21,7 +21,7 @@ const LocationSpeedTracker = () => {
 
         // Show a map centered at Latitude / Longitude.
 
-        setSpeed(speed)
+        setSpeed(speed * 3.6)
         setLocation({ latitude, longitude })
 
     }
