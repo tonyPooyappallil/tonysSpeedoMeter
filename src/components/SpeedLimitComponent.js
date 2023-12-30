@@ -34,7 +34,7 @@ console.log("aasssssss",lat,long);
     };
 
     fetchData();
-  }, []);
+  }, [lat,long]);
 
   // Function to infer speed limit based on road type
   const inferSpeedLimit = (roadType) => {
