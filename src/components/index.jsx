@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import SpeedLimitComponent from './SpeedLimitComponent';
 
 const LocationSpeedTracker = () => {
-    const [location, setLocation] = useState(null);
+    const [location, setLocation] = useState({ latitude: null, longitude: null });
+
     const [speed, setSpeed] = useState(null);
-    const [watchId, setWatchId] = useState(null);
+    // const [watchId, setWatchId] = useState(null);
 
     function errorCallback(error) { }
 
@@ -20,36 +22,36 @@ const LocationSpeedTracker = () => {
         const { accuracy, latitude, longitude, altitude, heading, speed } = position.coords;
 
         // Show a map centered at Latitude / Longitude.
-
+        console.log("location before set state", location, speed);
         setSpeed(speed)
         setLocation({ latitude, longitude })
+
 
     }
 
 
     useEffect(() => {
         const watchid = navigator.geolocation.watchPosition(successCallback, errorCallback, options);
-        setWatchId(watchid)
+        // setWatchId(watchid)
 
     }, []);
 
 
     console.log(speed);
+    console.log(location);
     return (
         <div>
-            {/* {location && (
+            {location.latitude && (
                 <div>
                     <p>Latitude: {location.latitude}</p>
                     <p>Longitude: {location.longitude}</p>
+                    <SpeedLimitComponent lat={location.latitude} long={location.longitude} />
                 </div>
-            )} */}
-
-
-            <h1> {speed == null ? 0 : <p> {Math.round(speed * 3.6)} km/hr</p>}</h1>
-
-
+            )}
+            <h1>{speed == null ? 0 : <p>{Math.round(speed * 3.6)} km/hr</p>}</h1>
         </div>
     );
+
 };
 
 export default LocationSpeedTracker;
