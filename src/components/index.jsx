@@ -46,6 +46,10 @@ const LocationSpeedTracker = () => {
                     <p>Latitude: {location.latitude}</p>
                     <p>Longitude: {location.longitude}</p>
                     <SpeedLimitComponent lat={location.latitude} long={location.longitude} />
+
+                    {/* <SpeedLimitComponent lat="-31.661066" long="115.717194" /> */}
+
+
                 </div>
             )}
             <h1>{speed == null ? 0 : <p>{Math.round(speed * 3.6)} km/hr</p>}</h1>
