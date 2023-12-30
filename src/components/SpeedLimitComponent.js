@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import SpeedLimitCircle from './alert/SpeedingAlert';
 
-const SpeedLimitComponent = ({lat,long}) => {
+const SpeedLimitComponent = ({lat,long,speed}) => {
   const [speedLimit, setSpeedLimit] = useState(null);
 console.log("aasssssss",lat,long);
   useEffect(() => {
@@ -53,7 +54,8 @@ console.log("aasssssss",lat,long);
 
   return (
     <div>
-      <p>Speed Limit: {speedLimit !== null ? `${speedLimit} km/h` : 'Unknown'}</p>
+   {speedLimit && <SpeedLimitCircle speedLimit={speedLimit} currentSpeed={speed}></SpeedLimitCircle>}
+      <p> {speedLimit && ` Speed Limit: ${speedLimit} km/h`}</p>
     </div>
   );
 };
