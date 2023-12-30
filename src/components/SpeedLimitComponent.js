@@ -8,7 +8,7 @@ console.log("aasssssss",lat,long);
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `https://overpass-api.de/api/interpreter?data=[out:json];way(around:1,${lat},${long})[%22highway%22];out body;>;out skel qt;`
+          `https://overpass-api.de/api/interpreter?data=[out:json];way(around:8,${lat},${long})[%22highway%22];out body;>;out skel qt;`
         );
         
 

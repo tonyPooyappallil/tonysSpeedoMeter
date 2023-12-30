@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useSpring, animated } from 'react-spring';
-import { useGesture } from 'react-use-gesture';
 import ReactPlayer from 'react-player';
 
 const SpeedLimitCircle = ({ speedLimit, currentSpeed }) => {
@@ -21,10 +20,7 @@ const SpeedLimitCircle = ({ speedLimit, currentSpeed }) => {
         }
     }, [speedLimit, currentSpeed]);
 
-    // Set up gesture handling for user interaction
-    const bind = useGesture({
-        onPointerUp: () => setAlert(false),
-    });
+
 
     return (
         <div>
@@ -40,7 +36,7 @@ const SpeedLimitCircle = ({ speedLimit, currentSpeed }) => {
                     cursor: 'pointer',
                     transform: scale.interpolate((s) => `scale(${s})`),
                 }}
-                {...bind()}
+
             >
                 <p style={{ fontSize: '24px', color: 'white' }}>{speedLimit}</p>
             </animated.div>
@@ -50,8 +46,9 @@ const SpeedLimitCircle = ({ speedLimit, currentSpeed }) => {
                 <ReactPlayer
                     url="/MD-80_Overspeed.mp3" // Replace with the actual path to your audio file
                     playing={true}
-                    volume={1.0}
-                    onEnded={() => setAlert(false)}
+                    volume={1}
+
+
                 />
             )}
         </div>
