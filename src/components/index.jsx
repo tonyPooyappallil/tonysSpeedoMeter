@@ -19,7 +19,7 @@ const LocationSpeedTracker = () => {
 
     function successCallback(position) {
 
-        const { accuracy, latitude, longitude, altitude, heading, speed } = position.coords;
+        const { latitude, longitude, speed } = position.coords;
 
         // Show a map centered at Latitude / Longitude.
         console.log("location before set state", location, speed);

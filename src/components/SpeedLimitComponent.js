@@ -61,7 +61,7 @@ console.log("aasssssss",lat,long);
       
        
     }}>
-        <div>   {speedLimit && <SpeedLimitCircle speedLimit={speedLimit} currentSpeed={speed}></SpeedLimitCircle>}
+        <div>    <SpeedLimitCircle speedLimit={speedLimit} currentSpeed={speed}></SpeedLimitCircle>
  </div>
     <div> <p> {speedLimit && ` Speed Limit: ${speedLimit} km/h`}</p> </div> 
     </div>
