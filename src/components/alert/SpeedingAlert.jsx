@@ -12,7 +12,7 @@ const SpeedLimitCircle = ({ speedLimit, currentSpeed }) => {
 
     // Check the speed limit and trigger an alert
     useEffect(() => {
-        if (currentSpeed > speedLimit) {
+        if (speedLimit != null && currentSpeed > speedLimit) {
             setAlert(true);
             play();
         } else {
