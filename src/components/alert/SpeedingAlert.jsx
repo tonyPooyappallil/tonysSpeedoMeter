@@ -1,45 +1,49 @@
 import React, { useState, useEffect } from 'react';
-import { useSpring, animated } from 'react-spring';
 import ReactPlayer from 'react-player';
+import useSound from 'use-sound';
+import Modal from 'react-modal';
 
 const SpeedLimitCircle = ({ speedLimit, currentSpeed }) => {
     const [alert, setAlert] = useState(false);
+    const [play] = useSound('/MD-80_Overspeed.mp3');
+    const [modalOpen, setModalOpen] = useState(true);
 
-    // Define the animation spring for scaling
-    const { scale } = useSpring({
-        scale: alert ? 1.2 : 1,
-        config: { tension: 200, friction: 20 },
-    });
+
 
     // Check the speed limit and trigger an alert
     useEffect(() => {
         if (currentSpeed > speedLimit) {
             setAlert(true);
+            play();
         } else {
             setAlert(false);
         }
-    }, [speedLimit, currentSpeed]);
+    }, [speedLimit, currentSpeed, play]);
+
+
+    const handleModalResponse = (response) => {
+        setModalOpen(false);
+    };
+
 
 
 
     return (
         <div>
-            <animated.div
+            <div
                 style={{
                     width: '80px',
                     height: '80px',
                     borderRadius: '50%',
-                    backgroundColor: alert ? 'red' : 'lightblue',
+                    backgroundColor: alert ? 'red' : 'green',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    cursor: 'pointer',
-                    transform: scale.interpolate((s) => `scale(${s})`),
+                    // cursor: 'pointer',
                 }}
-
             >
                 <p style={{ fontSize: '24px', color: 'white' }}>{speedLimit}</p>
-            </animated.div>
+            </div>
 
             {/* Audio alert when speeding */}
             {alert && (
@@ -51,6 +55,15 @@ const SpeedLimitCircle = ({ speedLimit, currentSpeed }) => {
 
                 />
             )}
+            {/* Modal for user confirmation */}
+            <Modal
+                isOpen={modalOpen}
+                onRequestClose={() => handleModalResponse('no')}
+                contentLabel="Alert Permission Modal"
+            >
+                <p>Are you okay with playing an audio alert?</p>
+                <button onClick={() => handleModalResponse('yes')}>Yes</button>
+            </Modal>
         </div>
     );
 };
