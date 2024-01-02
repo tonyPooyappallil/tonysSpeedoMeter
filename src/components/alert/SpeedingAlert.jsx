@@ -13,7 +13,7 @@ const SpeedLimitCircle = ({ speedLimit, currentSpeed }) => {
             setAlert(true);
             // Set a timeout for 2 seconds to play the audio
             setTimeout(() => {
-                if (audioEnabled) {
+                if (audioEnabled && currentSpeed > (speedLimit + 5)) {
                     play();
                 }
             }, 2000);
@@ -22,14 +22,14 @@ const SpeedLimitCircle = ({ speedLimit, currentSpeed }) => {
             stop()
             setAlert(false);
         };
-        if (speedLimit != null && currentSpeed > (speedLimit + 5)) {
+        if (speedLimit != null && currentSpeed > speedLimit) {
             handleSpeedLimitBreached();
         } else {
             handleSpeedLimitNormal();
         }
     }, [speedLimit, currentSpeed, audioEnabled, play, stop]);
 
-    const handleModalResponse = (response) => {
+    const handleModalResponse = () => {
         setModalOpen(false);
     };
 
