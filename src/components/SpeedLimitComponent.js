@@ -55,7 +55,7 @@ console.log("aasssssss",lat,long);
   return (
     <div  style={{
         
-        height: '80px',
+        
         width: "20%",
         margin: "auto",
       
@@ -63,7 +63,6 @@ console.log("aasssssss",lat,long);
     }}>
         <div>    <SpeedLimitCircle speedLimit={speedLimit} currentSpeed={speed}></SpeedLimitCircle>
  </div>
-    <div> <p> {speedLimit && ` Speed Limit: ${speedLimit} km/h`}</p> </div> 
     </div>
   );
 };
