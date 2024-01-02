@@ -4,18 +4,16 @@ import Modal from 'react-modal';
 
 const SpeedLimitCircle = ({ speedLimit, currentSpeed }) => {
     const [alert, setAlert] = useState(false);
-    const [play, { stop }] = useSound('/Beep.mp3');
+    const [play, { stop }] = useSound('/Beep.mp3', { interrupt: false });
     const [modalOpen, setModalOpen] = useState(true);
     const [audioEnabled, setAudioEnabled] = useState(true);
 
     useEffect(() => {
-        let alertTimeout;
 
         const handleSpeedLimitBreached = () => {
             setAlert(true);
-
             // Set a timeout for 2 seconds to play the audio
-            alertTimeout = setTimeout(() => {
+            setTimeout(() => {
                 if (audioEnabled) {
                     play();
                 }
@@ -23,10 +21,8 @@ const SpeedLimitCircle = ({ speedLimit, currentSpeed }) => {
         };
 
         const handleSpeedLimitNormal = () => {
+            stop()
             setAlert(false);
-
-            // Clear the timeout if speed limit becomes normal
-            clearTimeout(alertTimeout);
         };
 
         if (speedLimit != null && currentSpeed > (speedLimit + 5)) {
@@ -35,12 +31,6 @@ const SpeedLimitCircle = ({ speedLimit, currentSpeed }) => {
             handleSpeedLimitNormal();
         }
 
-        // Cleanup function
-        return () => {
-            clearTimeout(alertTimeout);
-            handleSpeedLimitNormal();
-            stop(); // Stop the audio if it's currently playing
-        };
     }, [speedLimit, currentSpeed, audioEnabled, play, stop]);
 
     const handleModalResponse = (response) => {
