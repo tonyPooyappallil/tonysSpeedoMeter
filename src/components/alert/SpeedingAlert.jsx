@@ -9,7 +9,6 @@ const SpeedLimitCircle = ({ speedLimit, currentSpeed }) => {
     const [audioEnabled, setAudioEnabled] = useState(true);
 
     useEffect(() => {
-
         const handleSpeedLimitBreached = () => {
             setAlert(true);
             // Set a timeout for 2 seconds to play the audio
@@ -19,18 +18,15 @@ const SpeedLimitCircle = ({ speedLimit, currentSpeed }) => {
                 }
             }, 2000);
         };
-
         const handleSpeedLimitNormal = () => {
             stop()
             setAlert(false);
         };
-
         if (speedLimit != null && currentSpeed > (speedLimit + 5)) {
             handleSpeedLimitBreached();
         } else {
             handleSpeedLimitNormal();
         }
-
     }, [speedLimit, currentSpeed, audioEnabled, play, stop]);
 
     const handleModalResponse = (response) => {

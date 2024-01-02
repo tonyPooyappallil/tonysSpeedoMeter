@@ -5,7 +5,6 @@ const LocationSpeedTracker = () => {
     const [location, setLocation] = useState({ latitude: null, longitude: null });
 
     const [speed, setSpeed] = useState(null);
-    // const [watchId, setWatchId] = useState(null);
 
     function errorCallback(error) { }
 
@@ -32,7 +31,6 @@ const LocationSpeedTracker = () => {
 
     useEffect(() => {
         const watchid = navigator.geolocation.watchPosition(successCallback, errorCallback, options);
-        // setWatchId(watchid)
 
     }, []);
 
@@ -44,9 +42,6 @@ const LocationSpeedTracker = () => {
             {location.latitude && (
                 <div>
                     <SpeedLimitComponent lat={location.latitude} long={location.longitude} speed={speed * 3.6} />
-
-                    {/* <SpeedLimitComponent lat="-31.661066" long="115.717194" /> */}
-
 
                 </div>
             )}
