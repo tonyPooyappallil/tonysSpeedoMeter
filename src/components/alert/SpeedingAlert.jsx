@@ -45,8 +45,8 @@ const SpeedLimitCircle = ({ speedLimit, currentSpeed }) => {
             {speedLimit && (
                 <div
                     style={{
-                        width: '80px',
-                        height: '80px',
+                        width: '180px',
+                        height: '180px',
                         borderRadius: '50%',
                         backgroundColor: alert ? 'red' : 'green',
                         display: 'flex',
