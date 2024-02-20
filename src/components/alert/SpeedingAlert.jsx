@@ -13,10 +13,10 @@ const SpeedLimitCircle = ({ speedLimit, currentSpeed }) => {
             setAlert(true);
             // Set a timeout for 2 seconds to play the audio
             setTimeout(() => {
-                if (audioEnabled && currentSpeed > (speedLimit + 5)) {
+                if (audioEnabled && currentSpeed > (speedLimit)) {
                     play();
                 }
-            }, 2000);
+            }, 1500);
         };
         const handleSpeedLimitNormal = () => {
             stop()
