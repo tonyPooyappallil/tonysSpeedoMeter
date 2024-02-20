@@ -41,7 +41,13 @@ const SpeedLimitCircle = ({ speedLimit, currentSpeed }) => {
     };
 
     return (
-        <div>
+        <div
+            style={{
+                display: 'flex',
+                flexDirection: "column",
+                alignItems: 'center',
+                justifyContent: 'center',
+            }}>
             {speedLimit && (
                 <div
                     style={{
@@ -52,9 +58,10 @@ const SpeedLimitCircle = ({ speedLimit, currentSpeed }) => {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
+                        margin: '20px'
                     }}
                 >
-                    <p style={{ fontSize: '24px', color: 'white' }}>{speedLimit}</p>
+                    <p style={{ fontSize: '84px', color: 'white' }}>{speedLimit}</p>
                 </div>
             )}
 
